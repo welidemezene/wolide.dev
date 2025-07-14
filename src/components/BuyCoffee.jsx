@@ -354,7 +354,7 @@ const BuyCoffee = () => {
             {/* Floating Coffee Button - Positioned above AI Assistant */}
             <button
                 onClick={() => setIsOpen(true)}
-                className="fixed bottom-20 right-6 z-50 w-14 h-14 bg-gradient-to-r from-orange-500 to-red-500 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 flex items-center justify-center group border-2 border-white dark:border-gray-800"
+                className="buy-coffee-btn"
                 aria-label="Buy Wolde a Coffee"
             >
                 <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -369,12 +369,20 @@ const BuyCoffee = () => {
             {/* Main Modal - Right Side Popup */}
             {isOpen && !showBankDetails && (
                 <div
-                    ref={coffeeWindowRef}
-                    className="fixed bottom-24 right-6 z-40 w-96 h-[28rem] bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border-2 border-orange-200 dark:border-orange-800 flex flex-col"
+                    ref={modalRef}
+                    className="
+                        fixed inset-0 z-[1001] flex items-end justify-end p-2
+                        sm:items-end sm:justify-end
+                    "
                 >
                     <div
-                        ref={modalRef}
-                        className="flex-1 flex flex-col h-full"
+                        ref={coffeeWindowRef}
+                        className="
+                            relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl
+                            w-full max-w-xs sm:max-w-md mx-2
+                            max-h-[90vh] overflow-y-auto
+                            p-6
+                        "
                     >
                         {/* Header */}
                         <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-4 rounded-t-2xl flex-shrink-0">
@@ -430,8 +438,8 @@ const BuyCoffee = () => {
                                     <button
                                         onClick={() => handleCurrencyChange('USD')}
                                         className={`py-4 px-4 rounded-lg border-2 transition-all duration-200 transform hover:scale-105 active:scale-95 ${selectedCurrency === 'USD'
-                                                ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 shadow-md'
-                                                : 'border-gray-200 dark:border-gray-600 hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-md'
+                                            ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 shadow-md'
+                                            : 'border-gray-200 dark:border-gray-600 hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-md'
                                             }`}
                                     >
                                         <div className="text-center">
@@ -442,8 +450,8 @@ const BuyCoffee = () => {
                                     <button
                                         onClick={() => handleCurrencyChange('ETB')}
                                         className={`py-4 px-4 rounded-lg border-2 transition-all duration-200 transform hover:scale-105 active:scale-95 ${selectedCurrency === 'ETB'
-                                                ? 'border-green-500 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 shadow-md'
-                                                : 'border-gray-200 dark:border-gray-600 hover:border-green-300 dark:hover:border-green-600 hover:shadow-md'
+                                            ? 'border-green-500 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 shadow-md'
+                                            : 'border-gray-200 dark:border-gray-600 hover:border-green-300 dark:hover:border-green-600 hover:shadow-md'
                                             }`}
                                     >
                                         <div className="text-center">
@@ -465,8 +473,8 @@ const BuyCoffee = () => {
                                             key={amount}
                                             onClick={() => handleAmountSelect(amount)}
                                             className={`py-4 px-3 rounded-lg border-2 transition-all duration-200 transform hover:scale-105 active:scale-95 ${selectedAmount === amount && !customAmount
-                                                    ? 'border-orange-500 bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-300 shadow-md'
-                                                    : 'border-gray-200 dark:border-gray-600 hover:border-orange-300 dark:hover:border-orange-600 hover:shadow-md'
+                                                ? 'border-orange-500 bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-300 shadow-md'
+                                                : 'border-gray-200 dark:border-gray-600 hover:border-orange-300 dark:hover:border-orange-600 hover:shadow-md'
                                                 }`}
                                         >
                                             <span className="text-lg font-semibold">{formatCurrency(amount, selectedCurrency)}</span>
@@ -554,6 +562,31 @@ const BuyCoffee = () => {
 
             {/* Bank Details Modal */}
             {showBankDetails && <BankDetailsModal />}
+            <style>{`
+  .buy-coffee-btn {
+    position: fixed;
+    bottom: 1rem;
+    right: 5.5rem;
+    z-index: 50;
+    background: linear-gradient(90deg, #f59e42 0%, #fbbf24 100%);
+    color: white;
+    padding: 1rem;
+    border-radius: 9999px;
+    box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @media (max-width: 640px) {
+    .buy-coffee-btn {
+      left: 50%;
+      right: auto;
+      transform: translateX(10%);
+      bottom: 1rem;
+    }
+  }
+`}</style>
         </>
     )
 }

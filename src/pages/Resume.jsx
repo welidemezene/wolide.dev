@@ -141,7 +141,7 @@ const Resume = () => {
                                             <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                                             <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                                         </svg>
-                                        welidemedhinmezenebiraman@gmail.com
+                                        woldemedihnmezene@gmail.com
                                     </span>
                                     <span className="flex items-center">
                                         <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -392,7 +392,7 @@ const Resume = () => {
                                 <div className="border-l-4 border-blue-500 pl-6">
                                     <h4 className="text-lg font-semibold text-gray-900 dark:text-white">Competitive Programming & Problem Solving</h4>
                                     <p className="text-blue-600 dark:text-blue-400 font-medium">CSEC Club Member</p>
-                                    <p className="text-gray-500 dark:text-gray-400">2023 - Present</p>
+                                    <p className="text-gray-500 dark:text-gray-400">2024 - Present</p>
                                     <ul className="text-gray-600 dark:text-gray-300 mt-3 space-y-1 text-sm">
                                         <li>• <strong>Solved 500+ programming challenges</strong> across LeetCode, Codeforces, and HackerRank</li>
                                         <li>• Developed efficient algorithms and optimized solutions for complex computational problems</li>
