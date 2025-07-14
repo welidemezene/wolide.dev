@@ -181,11 +181,12 @@ const Navbar = () => {
     <>
       <nav
         ref={navbarRef}
-        className={`fixed top-0 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 ${isScrolled
-          ? 'w-4/5 max-w-screen-xl mt-4 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border border-gray-200/50 dark:border-gray-700/50 rounded-2xl shadow-lg'
-          : 'w-4/5 max-w-screen-xl mt-6 bg-transparent'
-          }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+            ? 'w-full sm:w-4/5 max-w-screen-xl mt-0 sm:mt-4 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50 sm:rounded-2xl shadow-lg'
+            : 'w-full sm:w-4/5 max-w-screen-xl mt-0 sm:mt-6 bg-transparent'
+          } mx-auto px-4`}
       >
+
         <div className="px-4 sm:px-6 py-4">
           <div className="flex justify-between items-center">
             {/* Logo */}
@@ -288,19 +289,19 @@ const Navbar = () => {
               <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-md rounded-xl border border-gray-200/50 dark:border-gray-700/50 shadow-lg">
                 <div className="px-4 py-3 space-y-2">
                   {navItems.map((item, index) => (
-                    <Link
-                      key={item.name}
-                      to={item.path}
-                      className={`flex items-center space-x-3 px-3 py-2 rounded-lg text-base font-medium transition-all duration-200 touch-feedback hover:scale-105 ${isActive(item.path)
-                        ? 'text-blue-500 bg-blue-50 dark:bg-blue-900/20'
-                        : 'text-gray-700 dark:text-gray-300 hover:text-blue-500 hover:bg-gray-50 dark:hover:bg-gray-700/50'
-                        }`}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      style={{ animationDelay: `${index * 50}ms` }}
-                    >
-                      <span>{item.icon}</span>
-                      <span>{item.name}</span>
-                    </Link>
+                    <div key={item.name} style={{ animationDelay: `${index * 50}ms` }}>
+                      <Link
+                        to={item.path}
+                        className={`flex items-center space-x-3 px-3 py-2 rounded-lg text-base font-medium transition-all duration-200 touch-feedback hover:scale-105 ${isActive(item.path)
+                          ? 'text-blue-500 bg-blue-50 dark:bg-blue-900/20'
+                          : 'text-gray-700 dark:text-gray-300 hover:text-blue-500 hover:bg-gray-50 dark:hover:bg-gray-700/50'
+                          }`}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        <span>{item.icon}</span>
+                        <span>{item.name}</span>
+                      </Link>
+                    </div>
                   ))}
 
                   {/* Upwork Badge for Mobile */}
@@ -330,6 +331,7 @@ const Navbar = () => {
           onClick={handleMobileMenuToggle}
         />
       )}
+
     </>
   )
 }

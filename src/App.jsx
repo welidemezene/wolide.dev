@@ -10,7 +10,7 @@ import Resume from './pages/Resume'
 import Contact from './pages/Contact'
 import ProjectDetail from './pages/ProjectDetail'
 import BackgroundAnimation from './components/BackgroundAnimation'
-import BuyCoffee from './components/BuyCoffee'
+
 import { ThemeProvider } from './context/ThemeContext'
 
 function AppContent() {
@@ -67,29 +67,15 @@ function AppContent() {
       {/* Floating Action Buttons */}
       <div
         className="
-          fixed
-          z-[1000]
-          flex
-          flex-col
-          gap-3
-          bottom-4
-          right-4
-          items-end
-          w-auto
-          pointer-events-none
-          sm:bottom-4
-          sm:right-4
-          sm:gap-3
-          sm:items-end
-          sm:flex-col
+          fixed z-[1000] flex flex-col gap-3 bottom-4 left-0 right-0 items-center w-full pointer-events-none sm:right-4 sm:left-auto sm:items-end
         "
         style={{
-          maxWidth: 'calc(100vw - 12px)',
+          maxWidth: '100vw',
         }}
       >
-        <div className="pointer-events-auto">
-          <BuyCoffee />
-        </div>
+        {/* <div className="pointer-events-auto">
+          {/* AI Assistant button or iframe 
+        </div> */}
       </div>
     </div>
   )
