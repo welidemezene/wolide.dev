@@ -1,3 +1,523 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom line clamp utilities */
+@layer utilities {
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Blog post heading visibility improvements */
+@layer components {
+  .blog-post-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.3;
+    min-height: 2.6em;
+  }
+
+  .blog-post-excerpt {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.5;
+    min-height: 4.5em;
+  }
+
+  .blog-header {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+}
+
+/* Smooth scrolling for the entire app */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Focus styles for accessibility */
+*:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Remove focus outline for mouse users */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.6s ease-out;
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+
+  /* Reduce animation complexity on mobile for better performance */
+  * {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  /* Ensure smooth animations on mobile */
+  .transition-all,
+  .transition-transform,
+  .transition-opacity,
+  .transition-colors {
+    -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Touch-friendly hover alternatives - ENHANCED */
+  .group:active .group-hover\:scale-110,
+  .group:active .group-hover\:opacity-100,
+  .group:active .group-hover\:text-blue-500,
+  .group:active .group-hover\:border-blue-500,
+  .group:active .group-hover\:shadow-xl,
+  .group:active .group-hover\:shadow-2xl {
+    transform: scale(1.05) !important;
+    opacity: 1 !important;
+    color: #3b82f6 !important;
+    border-color: #3b82f6 !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+  }
+
+  /* Active state styles for mobile - ENHANCED */
+  .group:active {
+    transform: scale(0.98) !important;
+  }
+
+  /* Ensure buttons are touch-friendly */
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Force hover effects to work on mobile via active states */
+  .hover\:scale-105:active,
+  .hover\:scale-110:active,
+  .hover\:opacity-100:active,
+  .hover\:text-blue-500:active,
+  .hover\:border-blue-500:active,
+  .hover\:shadow-xl:active,
+  .hover\:shadow-2xl:active {
+    transform: scale(1.05) !important;
+    opacity: 1 !important;
+    color: #3b82f6 !important;
+    border-color: #3b82f6 !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+  }
+}
+
+/* Touch device optimizations - ENHANCED */
+@media (hover: none) and (pointer: coarse) {
+
+  /* Disable hover effects on touch devices but keep active states */
+  .hover\:scale-105:hover,
+  .hover\:scale-110:hover,
+  .hover\:opacity-100:hover,
+  .hover\:text-blue-500:hover,
+  .hover\:border-blue-500:hover,
+  .hover\:shadow-xl:hover,
+  .hover\:shadow-2xl:hover {
+    transform: none !important;
+    opacity: inherit !important;
+    color: inherit !important;
+    border-color: inherit !important;
+    box-shadow: inherit !important;
+  }
+
+  /* Use active states instead of hover - ENHANCED */
+  .group:active .group-hover\:scale-110,
+  .group:active .group-hover\:opacity-100,
+  .group:active .group-hover\:text-blue-500,
+  .group:active .group-hover\:border-blue-500,
+  .group:active .group-hover\:shadow-xl,
+  .group:active .group-hover\:shadow-2xl {
+    transform: scale(1.05) !important;
+    opacity: 1 !important;
+    color: #3b82f6 !important;
+    border-color: #3b82f6 !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+  }
+
+  /* Enhanced active states for touch devices */
+  .touch-feedback:active {
+    transform: scale(0.98) !important;
+  }
+
+  /* Force active states to work on touch */
+  .group:active {
+    transform: scale(0.98) !important;
+  }
+
+  /* Ensure all interactive elements respond to touch */
+  button:active,
+  a:active,
+  .touch-feedback:active {
+    transform: scale(0.98) !important;
+  }
+}
+
+/* Responsive text utilities */
+@layer utilities {
+  .text-responsive-xs {
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+  }
+
+  .text-responsive-sm {
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+  }
+
+  .text-responsive-base {
+    font-size: clamp(1rem, 3vw, 1.125rem);
+  }
+
+  .text-responsive-lg {
+    font-size: clamp(1.125rem, 3.5vw, 1.25rem);
+  }
+
+  .text-responsive-xl {
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
+  }
+
+  .text-responsive-2xl {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+
+  .text-responsive-3xl {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+
+  .text-responsive-4xl {
+    font-size: clamp(2.5rem, 7vw, 4rem);
+  }
+
+  .text-responsive-5xl {
+    font-size: clamp(3rem, 8vw, 5rem);
+  }
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Loading animation */
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Custom button styles */
+.btn-primary {
+  @apply bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl;
+}
+
+.btn-secondary {
+  @apply bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300;
+}
+
+/* Card styles */
+.card {
+  @apply bg-white/50 dark:bg-gray-800/50 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200/50 dark:border-gray-700/50;
+}
+
+.card-hover {
+  @apply card hover:border-blue-500/50 dark:hover:border-blue-500/50 hover:scale-105;
+}
+
+/* Mobile touch feedback - ENHANCED */
+.touch-feedback {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.touch-feedback:active {
+  transform: scale(0.98) !important;
+}
+
+/* Enhanced mobile interactions for all interactive elements */
+@media (max-width: 768px) {
+
+  /* Force all interactive elements to respond to touch */
+  button:active,
+  a:active,
+  .touch-feedback:active,
+  .group:active {
+    transform: scale(0.98) !important;
+  }
+
+  /* Ensure hover effects work via active states on mobile */
+  .group:active .group-hover\:scale-110 {
+    transform: scale(1.05) !important;
+  }
+
+  .group:active .group-hover\:opacity-100 {
+    opacity: 1 !important;
+  }
+
+  .group:active .group-hover\:text-blue-500 {
+    color: #3b82f6 !important;
+  }
+
+  .group:active .group-hover\:border-blue-500 {
+    border-color: #3b82f6 !important;
+  }
+
+  .group:active .group-hover\:shadow-xl,
+  .group:active .group-hover\:shadow-2xl {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+  }
+
+  /* Ensure hamburger menu works properly */
+  .mobile-menu-button:active {
+    transform: scale(0.95) !important;
+  }
+}
+
+/* Enhanced mobile interactions */
+@media (max-width: 768px) {
+
+  /* Force active states to work on mobile */
+  .group:active .group-hover\:scale-110 {
+    transform: scale(1.05) !important;
+  }
+
+  .group:active .group-hover\:opacity-100 {
+    opacity: 1 !important;
+  }
+
+  .group:active .group-hover\:text-blue-500 {
+    color: #3b82f6 !important;
+  }
+
+  .group:active .group-hover\:border-blue-500 {
+    border-color: #3b82f6 !important;
+  }
+
+  .group:active .group-hover\:shadow-xl,
+  .group:active .group-hover\:shadow-2xl {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+  }
+
+  /* Ensure hamburger menu works properly */
+  .mobile-menu-button:active {
+    transform: scale(0.95) !important;
+  }
+
+  /* Force all interactive elements to respond to touch */
+  button:active,
+  a:active,
+  .touch-feedback:active,
+  .group:active {
+    transform: scale(0.98) !important;
+  }
+}
+
+/* Ensure GSAP animations work on mobile */
+.gsap-marker-start,
+.gsap-marker-end,
+.gsap-marker-scroller-start,
+.gsap-marker-scroller-end {
+  display: none !important;
+}
+
+/* Mobile-specific animation optimizations */
+@media (max-width: 768px) {
+  .gsap-animation {
+    will-change: transform, opacity;
+  }
+
+  /* Ensure smooth transitions on mobile */
+  .transition-all,
+  .transition-transform,
+  .transition-opacity,
+  .transition-colors {
+    -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Input styles */
+.input-field {
+  @apply w-full px-4 py-3 bg-white/50 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300;
+}
+
+/* Tag styles */
+.tag {
+  @apply bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-3 py-1 rounded-full text-sm font-medium border border-blue-200 dark:border-blue-800;
+}
+
+.tag-secondary {
+  @apply bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-3 py-1 rounded-full text-sm font-medium;
+}
+
+/* Section spacing */
+.section-padding {
+  @apply py-12 sm:py-16 lg:py-20;
+}
+
+.section-margin {
+  @apply mb-12 sm:mb-16 lg:mb-20;
+}
+
+/* Container utilities */
+.container-sm {
+  @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.container-lg {
+  @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Grid utilities */
+.grid-responsive {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8;
+}
+
+.grid-responsive-2 {
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-12;
+}
+
+/* Text utilities */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Aspect ratio utilities */
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-break {
+    page-break-before: always;
+  }
+}
