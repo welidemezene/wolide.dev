@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { useTheme } from '../../context/ThemeContext'
+import { useTheme } from '../context/ThemeContext'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -181,13 +181,15 @@ const Navbar = () => {
     <>
       <nav
         ref={navbarRef}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-            ? 'w-full sm:w-4/5 max-w-screen-xl mt-0 sm:mt-4 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50 sm:rounded-2xl shadow-lg'
-            : 'w-full sm:w-4/5 max-w-screen-xl mt-0 sm:mt-6 bg-transparent'
-          } mx-auto px-4`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 w-full px-0
+          ${isScrolled
+            ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50 shadow-lg'
+            : 'bg-transparent'
+          }
+        `}
       >
 
-        <div className="px-4 sm:px-6 py-4">
+        <div className="px-4 sm:px-6 py-4 w-full sm:w-4/5 max-w-screen-xl mx-auto sm:mt-4 lg:rounded-2xl">
           <div className="flex justify-between items-center">
             {/* Logo */}
             <div className="flex-shrink-0">

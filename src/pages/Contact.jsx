@@ -317,12 +317,14 @@ const Contact = () => {
                             <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Contact details</h4>
                             <div className="space-y-3">
                                 <div className="flex items-center space-x-3 text-gray-600 dark:text-gray-400">
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 20v-9.99l8 6.99 8-6.99V20H4z" />
                                     </svg>
-                                    <a href="mailto:woldemedihnmezene@gmail.com" className="hover:text-blue-500 transition-colors duration-300">
-                                        woldemedihnmezene@gmail.com
-                                    </a>
+                                    <span>
+                                        <a href="mailto:woldemedihnmezene@gmail.com" className="hover:text-blue-500 transition-colors duration-300 align-middle">
+                                            woldemedihnmezene@gmail.com
+                                        </a>
+                                    </span>
                                 </div>
                                 <div className="flex items-center space-x-3 text-gray-600 dark:text-gray-400">
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -338,7 +340,7 @@ const Contact = () => {
                                 <button
                                     onClick={() => {
                                         const mailtoLink = `mailto:woldemedihnmezene@gmail.com?subject=${encodeURIComponent('Portfolio Inquiry')}&body=${encodeURIComponent('Hello Woldemedihn,\n\nI would like to discuss a project with you.\n\nBest regards,')}`;
-                                        window.open(mailtoLink, '_blank');
+                                        window.location.href = mailtoLink;
                                     }}
                                     className="inline-flex items-center space-x-2 bg-blue-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
                                 >

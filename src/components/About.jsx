@@ -61,18 +61,18 @@ const About = () => {
                         </div>
 
                         {/* Stats - centered horizontally with image */}
-                        <div className="grid grid-cols-3 gap-6 text-center w-full max-w-sm">
-                            <div className="bg-white/50 dark:bg-gray-700/50 p-6 rounded-lg shadow-lg">
+                        <div className="grid grid-cols-3 gap-4 text-center w-full max-w-sm">
+                            <div className="bg-white/50 dark:bg-gray-700/50 p-4 rounded-lg shadow-lg flex flex-col items-center justify-center">
                                 <div className="text-3xl font-bold text-blue-500">10+</div>
-                                <div className="text-gray-600 dark:text-gray-400 text-sm">Projects Built</div>
+                                <div className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm break-words whitespace-normal mt-1 w-full flex items-center justify-center">Projects Built</div>
                             </div>
-                            <div className="bg-white/50 dark:bg-gray-700/50 p-6 rounded-lg shadow-lg">
+                            <div className="bg-white/50 dark:bg-gray-700/50 p-4 rounded-lg shadow-lg flex flex-col items-center justify-center">
                                 <div className="text-3xl font-bold text-purple-500">3D</div>
-                                <div className="text-gray-600 dark:text-gray-400 text-sm">Web Experiences</div>
+                                <div className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm break-words whitespace-normal mt-1 w-full flex items-center justify-center">Web Experiences</div>
                             </div>
-                            <div className="bg-white/50 dark:bg-gray-700/50 p-6 rounded-lg shadow-lg">
+                            <div className="bg-white/50 dark:bg-gray-700/50 p-4 rounded-lg shadow-lg flex flex-col items-center justify-center">
                                 <div className="text-3xl font-bold text-green-500">100%</div>
-                                <div className="text-gray-600 dark:text-gray-400 text-sm">Passion Driven</div>
+                                <div className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm break-words whitespace-normal mt-1 w-full flex items-center justify-center">Passion Driven</div>
                             </div>
                         </div>
                     </div>
@@ -177,7 +177,7 @@ const About = () => {
                         {/* Download CV button */}
                         <div className="pt-4">
                             <a
-                                href="/resume.pdf"
+                                href="/wolde-Resume.pdf"
                                 download
                                 className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
                             >

@@ -301,7 +301,7 @@ const Hero = () => {
 
                 {/* Main heading with beautiful styling */}
                 <div className="mb-6 sm:mb-8">
-                    <h1 ref={nameRef} className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-4 sm:mb-6">
+                    <h1 ref={nameRef} className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-4 sm:mb-6">
                         <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
                             Wolde
                         </span>
@@ -382,12 +382,12 @@ const Hero = () => {
                         ))}
                     </div>
                 </div>
+            </div> {/* End of main content container */}
 
-                {/* Scroll indicator */}
-                <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-                    <div className="w-6 h-10 border-2 border-gray-400 dark:border-gray-600 rounded-full flex justify-center">
-                        <div className="w-1 h-3 bg-gray-400 dark:bg-gray-600 rounded-full mt-2 animate-pulse"></div>
-                    </div>
+            {/* Scroll indicator - moved outside main content to prevent overlap */}
+            <div className="w-full flex justify-center mt-8 sm:mt-0 absolute left-0 right-0" style={{ bottom: 0 }}>
+                <div className="w-6 h-10 border-2 border-gray-400 dark:border-gray-600 rounded-full flex justify-center animate-bounce">
+                    <div className="w-1 h-3 bg-gray-400 dark:bg-gray-600 rounded-full mt-2 animate-pulse"></div>
                 </div>
             </div>
         </section>

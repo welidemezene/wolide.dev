@@ -3,21 +3,18 @@
 // Option 1: Using FormSubmit.co (free service)
 export const submitToFormSubmit = async (formData) => {
     try {
+        const form = new FormData();
+        form.append('name', formData.name);
+        form.append('email', formData.email);
+        form.append('subject', formData.subject);
+        form.append('message', formData.message);
+        form.append('_subject', `Portfolio Contact: ${formData.subject}`);
+        form.append('_captcha', 'false'); // Disable captcha for better UX
+        form.append('_template', 'table'); // Use table template for better formatting
+
         const response = await fetch('https://formsubmit.co/woldemedihnmezene@gmail.com', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-                name: formData.name,
-                email: formData.email,
-                subject: formData.subject,
-                message: formData.message,
-                _subject: `Portfolio Contact: ${formData.subject}`,
-                _captcha: false, // Disable captcha for better UX
-                _template: 'table' // Use table template for better formatting
-            })
+            body: form
         });
 
         if (response.ok) {
@@ -40,7 +37,7 @@ export const submitToWeb3Forms = async (formData) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                access_key: 'YOUR_WEB3FORMS_KEY', // You'll need to get this from web3forms.com
+                access_key: '30108707-ba38-4e90-bed0-8faca14a1eb8', // Provided Web3Forms key
                 name: formData.name,
                 email: formData.email,
                 subject: formData.subject,
@@ -86,10 +83,10 @@ Date: ${new Date().toLocaleString()}
 // Main email submission function with fallback
 export const submitContactForm = async (formData) => {
     try {
-        // Try FormSubmit first
-        return await submitToFormSubmit(formData);
+        // Use Web3Forms
+        return await submitToWeb3Forms(formData);
     } catch (error) {
-        console.log('FormSubmit failed, using mailto fallback');
+        console.log('Web3Forms failed, using mailto fallback');
 
         // Fallback to mailto
         const mailtoLink = createMailtoLink(formData);

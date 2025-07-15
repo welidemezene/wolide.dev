@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
-import Navbar from './assets/components/Navbar'
+import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import Projects from './pages/Projects'
@@ -52,7 +52,7 @@ function AppContent() {
       <BackgroundAnimation />
       <Navbar />
       {/* Add padding-top to account for fixed navbar */}
-      <div className="pt-24 sm:pt-28">
+      <div className="pt-0 md:pt-24 lg:pt-28">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
